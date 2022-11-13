@@ -1,0 +1,76 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+.todolist-app {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0;
+margin: 0;
+}
+
+.task-input-form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.task-input-form textarea[type=text]{
+height: 50px;
+min-width: 300px;
+}
+
+.task-input-form input[type=submit]{
+margin-top: 15px;
+margin-bottom: 10px;
+}
+
+.task-info {
+  display: flex;
+}
+
+.to-do-list {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+.taskItem {
+width: 290px;
+border: 1px solid rgb(197, 197, 197);
+display: flex;
+justify-content: space-between;
+padding: 5px;
+margin-top: 5px;
+align-items: center;
+}
+
+.task-description {
+  word-wrap: break-word;
+  max-width: 210px;
+  margin-left: 5px;
+}
+
+.complete {
+  background-color: rgb(175, 226, 175);
+}
+
+.delete-task-icon, .edit-task-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
+.tasks-completed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
