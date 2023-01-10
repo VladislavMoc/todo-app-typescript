@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { ITask } from './interfaces'
 import TodoForm from './TodoForm'
 import { MdOutlineClose } from 'react-icons/md'
 import { BiEditAlt } from 'react-icons/bi'
+import {TasksContext} from './TodoList'
 
 type TodoTaskProps = {
-    tasks: ITask[]
+    //tasks: ITask[]
     completeTask(id: number|null): void
     removeTask(id: number|null): void
     updateTask(taskId: number|null, newValue: string): void
 }
 
-const TodoTask: React.FC<TodoTaskProps> = ({ tasks, completeTask, removeTask, updateTask }) => {
+const TodoTask: React.FC<TodoTaskProps> = ({ /* tasks, */ completeTask, removeTask, updateTask }) => {
+    const newtasks = useContext(TasksContext);
     const [editTask, setEditTask] = useState<ITask>({
         id: null,
         text: '',
@@ -34,7 +36,7 @@ const TodoTask: React.FC<TodoTaskProps> = ({ tasks, completeTask, removeTask, up
     return (
         <div>
             <div className='tasks-to-be-done'>
-                {tasks.map((task, index) => (
+                {newtasks.map((task, index) => (
                     <div className={task.isComplete ? 'taskItem complete hidden' : 'taskItem'} key={index}>
                         <div className="task-info">
                             <input
@@ -65,7 +67,7 @@ const TodoTask: React.FC<TodoTaskProps> = ({ tasks, completeTask, removeTask, up
             </div>
             <div className='tasks-completed'>
                 <h2>Выполненные задачи</h2>
-                {tasks.map((task, index) => (
+                {newtasks.map((task, index) => (
                     <div className={task.isComplete ? 'taskItem complete' : 'taskItem hidden'} key={index}>
                         <div className="task-info">
                             <input

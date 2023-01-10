@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useMemo } from 'react'
 import { ITask } from './interfaces';
 import TodoForm from './TodoForm'
 import TodoTask from './TodoTask';
+
+
+export const TasksContext = createContext<ITask[]>([]);
 
 const TodoList: React.FunctionComponent = () => {
     const [tasks, setTasks] = useState<ITask[]>([]);
@@ -37,16 +40,18 @@ const TodoList: React.FunctionComponent = () => {
     }
 
     return (
-        <div className='to-do-list'>
-            <h1>Список задач</h1>
-            <TodoForm onSubmit={addTask} />
-            <TodoTask
-                tasks={tasks}
-                completeTask={completeTask}
-                removeTask={removeTask}
-                updateTask={updateTask}
-            />
-        </div>
+        <TasksContext.Provider value={tasks}>
+            <div className='to-do-list'>
+                <h1>Список задач</h1>
+                <TodoForm onSubmit={addTask} />
+                <TodoTask
+                    //tasks={tasks}
+                    completeTask={completeTask}
+                    removeTask={removeTask}
+                    updateTask={updateTask}
+                />
+            </div>
+        </TasksContext.Provider>
     )
 }
 
